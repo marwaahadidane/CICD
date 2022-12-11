@@ -65,8 +65,9 @@ pipeline {
         stage('push') {
         steps{
             
-                sh 'echo $dockerhubpwd'
-                    sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p dckr_pat_i317zQwIAtTM9PXhA2entzvQGXQ'
+              
+                
+                    sh 'docker login -u marwahadidan -p dckr_pat_i317zQwIAtTM9PXhA2entzvQGXQ'
                 
                 sh 'docker tag exam marwahadidan/exam'
                 sh 'docker push marwahadidan/exam'
