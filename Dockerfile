@@ -1,4 +1,5 @@
-FROM openjdk
+FROM openjdk:11
 EXPOSE 8089
-ADD target/exam-1.0.jar exam.jar
-ENTRYPOINT ["java","-jar","/exam.jar"]
+COPY ./target/exam-1.0.jar exam-1.0.jar
+CMD ["java","-jar","exam-1.0.jar"]
+
