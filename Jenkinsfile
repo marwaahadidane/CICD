@@ -57,7 +57,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t marwahadidan/ExamThourayaS2 .'
+                    sh 'docker build -t marwahadidan/exam .'
                 }
             }
         }
@@ -69,7 +69,7 @@ pipeline {
           stage('push docker hub') {
             steps {
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
-                sh 'docker push marwahadidan/ExamThourayaS2'
+                sh 'docker push marwahadidan/exam'
    
             }
         }
