@@ -5,8 +5,10 @@ pipeline {
         stage ('Git') {
             steps {
                 
-               
-                git 'https://github.com/marwaahadidane/CICD.git'
+              
+                git branch: 'main',
+  
+    url: 'https://github.com/marwaahadidane/CICD.git'
             }
         }
         stage ('Maven Clean') {
