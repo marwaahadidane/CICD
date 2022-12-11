@@ -59,18 +59,21 @@ pipeline {
         sh 'docker build -t exam .'
     }
 }
-stage('push') {
+        stage('push') {
         steps{
             
-              sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
-                sh 'docker tag achatapp marwahadidan/exam'
-                //sh 'docker push marwahadidan/exam'
+                sh 'echo $dockerhubpwd'
+                    sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p dckr_pat_i317zQwIAtTM9PXhA2entzvQGXQ'
+                
+                sh 'docker tag exam marwahadidan/exam'
+                sh 'docker push marwahadidan/exam'
                 
         }
         
         
         
         }
+
     stage('docker compose'){
          steps {
             sh 'docker-compose up -d'
