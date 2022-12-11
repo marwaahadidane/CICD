@@ -53,7 +53,7 @@ pipeline {
                     }
                 }
         
-        tage('BUILDING IMAGE'){
+        stage('BUILDING IMAGE'){
     steps {
         sh 'ls target/'
         sh 'docker build -t exam .'
