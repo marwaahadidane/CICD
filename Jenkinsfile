@@ -53,34 +53,29 @@ pipeline {
                     }
                 }
         
-        
-        stage('Build docker image'){
-            steps{
-                script{
-                    sh 'docker build -t marwahadidan/exam .'
-                }
-            }
-        }
-      
-        
-        
-        
-        
-          stage('push docker hub') {
-            steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
-                sh 'docker push marwahadidan/exam'
-   
-            }
-        }
-           stage(' docker-compose') {
-            steps {
-                sh 'docker-compose -f docker-compose.yml up -d'
-   
-            }
+        tage('BUILDING IMAGE'){
+    steps {
+        sh 'ls target/'
+        sh 'docker build -t exam .'
+    }
+}
+stage('push') {
+        steps{
+            
+              sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+                sh 'docker tag achatapp marwahadidan/exam'
+                //sh 'docker push marwahadidan/exam'
+                
         }
         
         
+        
+        }
+    stage('docker compose'){
+         steps {
+            sh 'docker-compose up -d'
+               }
+                            }
         
         
         
