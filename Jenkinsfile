@@ -50,7 +50,7 @@ pipeline {
                 sh 'mvn deploy'
                     }
                 }
-            
+    }  
     }
 }
 }
