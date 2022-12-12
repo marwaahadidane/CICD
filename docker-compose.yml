@@ -1,7 +1,7 @@
 version: '3'
 services:
 
-  tp-achat:
+  exam:
     container_name: exam
     image: "backend_exam"
     build: .
