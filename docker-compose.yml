@@ -1,13 +1,34 @@
-version: "3"
-
+version: '3'
 services:
-  mysqldb:
+
+  voyage:
+    container_name: voyage
+    image: "backend_voyage"
+    build: .
+    networks:
+      - test_default   
+    ports:
+      - "8089:8089"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/examv2thouraya?useSSL=false
+      - MYSQL_HOST=voyage-mysql
+      - MYSQL_USERNAME=marwa
+      - MYSQL_PASSWORD=marwa
+      - MYSQL_DATABASE=examv2thouraya
+    
+    depends_on:
+      - mysqldb
+  
+    mysqldb:
     image: mysql
     container_name: mysqldb
     restart: unless-stopped
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=1
+      - MYSQL_ROOT_PASSWORD=marwa
       - MYSQL_DATABASE=examv2thouraya
+      - MYSQL_USER=marwa
+      - MYSQL_PASSWORD=marwa
     ports:
       - 3306:3306
     volumes:
@@ -23,6 +44,10 @@ services:
       - .m2:/root/.m2
     stdin_open: true
     tty: true
+    networks:
+      - test_default   
 
 volumes:
   db:
+networks:
+  test_default:
