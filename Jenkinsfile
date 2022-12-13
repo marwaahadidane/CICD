@@ -67,10 +67,10 @@ pipeline {
             
               
                 
-                    sh 'docker login -u marwahadidan -p dckr_pat_i317zQwIAtTM9PXhA2entzvQGXQ'
+                    sh 'docker login -u slimmtana -p dckr_pat_iZJHMOGSFs9d0AHFrNawLQf-BuQ'
                 
-                sh 'docker tag exam marwahadidan/exam'
-                sh 'docker push marwahadidan/exam'
+                sh 'docker tag exam slimmtana/exam'
+                sh 'docker push slimmtana/exam'
                 
         }
         
